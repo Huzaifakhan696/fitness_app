@@ -157,45 +157,17 @@ class MoodCirclePainter extends CustomPainter {
 
     // Face removed - image will be displayed in center via Stack in parent widget
 
-    // Draw draggable indicator (white circle with R)
+    // Draw draggable indicator (complete white circle)
     final indicatorAngle = -math.pi / 2 + (value * 2 * math.pi);
     final indicatorX = center.dx + radius * math.cos(indicatorAngle);
     final indicatorY = center.dy + radius * math.sin(indicatorAngle);
 
-    // Outer white circle
+    // White circle
     final indicatorPaint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(Offset(indicatorX, indicatorY), 25, indicatorPaint);
-
-    // Inner shadow/border for indicator
-    final indicatorBorderPaint = Paint()
-      ..color = const Color(0xFF6B7A99)
-      ..style = PaintingStyle.fill;
-
-    canvas.drawCircle(Offset(indicatorX, indicatorY), 20, indicatorBorderPaint);
-
-    // Draw "R" text inside indicator
-    final textPainter = TextPainter(
-      text: const TextSpan(
-        text: 'R',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    );
-    textPainter.layout();
-    textPainter.paint(
-      canvas,
-      Offset(
-        indicatorX - textPainter.width / 2,
-        indicatorY - textPainter.height / 2,
-      ),
-    );
   }
 
   @override

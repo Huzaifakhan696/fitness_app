@@ -75,6 +75,7 @@ flutter:
     - lib/assets/mood_screen_assets/purple_content_mood.png
     - lib/assets/mood_screen_assets/pink_peacefull_mood.png
     - lib/assets/mood_screen_assets/orange_happy_mood.png
+    - lib/assets/training_screen_assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

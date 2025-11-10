@@ -233,7 +233,8 @@ class MoodScreen extends ConsumerWidget {
             context.go('/home');
             break;
           case 1:
-            // Plan - navigate when implemented
+            // Plan - navigate to training calendar
+            context.go('/plan');
             break;
           case 2:
             // Mood - already here, do nothing
