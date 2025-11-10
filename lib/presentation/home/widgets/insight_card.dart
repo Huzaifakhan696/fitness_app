@@ -41,8 +41,8 @@ class InsightCard extends StatelessWidget {
                 style: GoogleFonts.mulish(
                   color: Colors.white,
                   fontSize: 40,
-                  fontWeight: FontWeight.w600, // SemiBold
-                  height: 1.0, // 100% line height
+                  fontWeight: FontWeight.w600,
+                  height: 1.0,
                   letterSpacing: 0,
                 ),
               ),
@@ -52,8 +52,8 @@ class InsightCard extends StatelessWidget {
                 style: GoogleFonts.mulish(
                   color: Colors.white,
                   fontSize: 18,
-                  fontWeight: FontWeight.w700, // Bold
-                  height: 1.2, // 21.6px / 18px = 1.2
+                  fontWeight: FontWeight.w700,
+                  height: 1.2,
                   letterSpacing: 0,
                 ),
               ),
@@ -72,102 +72,93 @@ class InsightCard extends StatelessWidget {
                 style: GoogleFonts.mulish(
                   color: Colors.grey.shade400,
                   fontSize: 14,
-                  fontWeight: FontWeight.w500, // Medium
-                  height: 1.0, // 100% line height
+                  fontWeight: FontWeight.w500,
+                  height: 1.0,
                   letterSpacing: 0,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 42), // Gap
-          Expanded(
-            child: SizedBox(
-              height: 24, // Fixed height to ensure both cards are the same size
-              child: progress != null && !isWeight
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '0',
-                              style: GoogleFonts.mulish(
-                                color: Colors.grey.shade400,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              '2500',
-                              style: GoogleFonts.mulish(
-                                color: Colors.grey.shade400,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 2,
-                        ), // Reduced spacing - closer to line
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Stack(
-                            children: [
-                              Container(
-                                height: 4,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade800,
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                              FractionallySizedBox(
-                                widthFactor: progress,
-                                child: Container(
-                                  height: 4,
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color(0xFF7BBDE2), // #7BBDE2
-                                        Color(0xFF69C0B1), // #69C0B1
-                                        Color(0xFF60C198), // #60C198
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  : isWeight
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          const Spacer(),
+          progress != null && !isWeight
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Weight',
+                          '0',
                           style: GoogleFonts.mulish(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700, // Bold
-                            height: 1.2, // 21.6px / 18px = 1.2
-                            letterSpacing: 0,
+                            color: Colors.grey.shade400,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        const SizedBox(
-                          height: 6,
-                        ), // Spacer to match the labels + progress bar height
+                        Text(
+                          '2500',
+                          style: GoogleFonts.mulish(
+                            color: Colors.grey.shade400,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ],
-                    )
-                  : const SizedBox.shrink(),
-            ),
-          ),
+                    ),
+                    const SizedBox(height: 2),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade800,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                          FractionallySizedBox(
+                            widthFactor: progress,
+                            child: Container(
+                              height: 4,
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xFF7BBDE2),
+                                    Color(0xFF69C0B1),
+                                    Color(0xFF60C198),
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              : isWeight
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Weight',
+                      style: GoogleFonts.mulish(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2,
+                        letterSpacing: 0,
+                      ),
+                    ),
+                  ],
+                )
+              : const SizedBox.shrink(),
         ],
       ),
     );

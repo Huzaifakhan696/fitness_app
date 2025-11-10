@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// Export this provider so it can be used in home_screen.dart
 final selectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
 
 class WeekCalendar extends ConsumerWidget {
   const WeekCalendar({super.key});
   String _getDayAbbreviation(int weekday) {
     switch (weekday) {
-      case 1: // Monday
+      case 1:
         return 'M';
-      case 2: // Tuesday
+      case 2:
         return 'TU';
-      case 3: // Wednesday
+      case 3:
         return 'W';
-      case 4: // Thursday
+      case 4:
         return 'TH';
-      case 5: // Friday
+      case 5:
         return 'F';
-      case 6: // Saturday
+      case 6:
         return 'S';
-      case 7: // Sunday
+      case 7:
         return 'SU';
       default:
         return '';
@@ -32,9 +30,6 @@ class WeekCalendar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedDate = ref.watch(selectedDateProvider);
-    final today = DateTime.now();
-
-    // Get the start of the week (Monday)
     final startOfWeek = selectedDate.subtract(
       Duration(days: selectedDate.weekday - 1),
     );
@@ -53,10 +48,6 @@ class WeekCalendar extends ConsumerWidget {
               date.year == selectedDate.year &&
               date.month == selectedDate.month &&
               date.day == selectedDate.day;
-          final isToday =
-              date.year == today.year &&
-              date.month == today.month &&
-              date.day == today.day;
 
           return GestureDetector(
             onTap: () {
